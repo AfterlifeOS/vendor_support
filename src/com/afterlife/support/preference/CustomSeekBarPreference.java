@@ -31,7 +31,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.settings.custom.R;
+import com.afterlife.support.R;
 
 public class CustomSeekBarPreference extends Preference implements SeekBar.OnSeekBarChangeListener,
         View.OnClickListener, View.OnLongClickListener {
@@ -303,6 +303,16 @@ public class CustomSeekBarPreference extends Preference implements SeekBar.OnSee
         } else if (newValue != null && !newValue.isEmpty()) {
             setDefaultValue(Integer.parseInt(newValue), update);
         }
+    }
+
+    public void setMax(int max) {
+        mMaxValue = max;
+        mSeekBar.setMax(mMaxValue - mMinValue);
+    }
+
+    public void setMin(int min) {
+        mMinValue = min;
+        mSeekBar.setMax(mMaxValue - mMinValue);
     }
 
     public void setValue(int newValue) {
